@@ -1,0 +1,49 @@
+type PartyFactory @entity {
+  id: ID!
+  address: Bytes!
+  count: Int!
+  parties: [Party!] @derivedFrom(field: "factory")
+}
+
+type Party @entity {
+  id: ID!
+  address: Bytes!
+  createdAt: BigInt!
+  factory: PartyFactory!
+  name: String!
+  symbol: String!
+  token: ERC20!
+  merkleRoot: Bytes!
+  upfrontPct: BigInt!
+  vestingPeriod: BigInt!
+  vestingDurationInPeriods: Int!
+  vestingCliffInPeriods: Int!
+  vestings: [Vesting!] @derivedFrom(field: "party")
+}
+
+type Vesting @entity {
+  id: ID!
+  tokenId: BigInt!
+  party: Party!
+  startTime: BigInt!
+  beneficiary: Bytes!
+  amount: BigInt!
+  periodsClaimed: Int!
+  amountClaimed: BigInt!
+  claims: [Claim!] @derivedFrom(field: "vesting")
+}
+
+type Claim @entity {
+  id: ID!
+  vesting: Vesting!
+  createdAt: BigInt!
+  beneficiary: Bytes!
+  amount: BigInt!
+}
+
+type ERC20 @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  decimals: Int!
+}

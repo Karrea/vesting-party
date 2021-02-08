@@ -1,0 +1,33 @@
+specVersion: 0.0.2
+schema:
+  file: ./src/schema.graphql
+dataSources:
+{{> PartyFactory.yaml}}
+templates:
+  - kind: ethereum/contract
+    name: Party
+    network: {{network}}
+    source:
+      abi: Party
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Party
+        - Vesting
+        - Claim
+        - ERC20
+      abis:
+        - name: Party
+          file: $HARDHAT_PACKAGE/abis/contracts/Party.sol/Party.json
+      eventHandlers:
+        - event: VestingAdded(indexed uint256)
+          handler: handleVestingAdded
+        - event: PartyJoined(indexed address,uint256)
+          handler: handlePartyJoined
+        - event: VestingBeneficiaryTransfered(indexed uint256)
+          handler: handleVestingTokensClaimed
+        - event: VestingBeneficiaryTransfered(indexed uint256)
+          handler: handleVestingBeneficiaryTransfered
+      file: ./src/mapping.ts

@@ -1,0 +1,59 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "party",
+        "type": "address"
+      }
+    ],
+    "name": "NewParty",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_merkleRoot",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_upfrontVestingPct",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_vestingPeriodUnit",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint16",
+        "name": "_vestingDurationInPeriods",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint16",
+        "name": "_vestingCliffInPeriods",
+        "type": "uint16"
+      }
+    ],
+    "name": "startParty",
+    "outputs": [
+      {
+        "internalType": "contract Party",
+        "name": "party",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

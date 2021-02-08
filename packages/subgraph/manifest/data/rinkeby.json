@@ -1,0 +1,12 @@
+{
+  "network": "rinkeby",
+  "dataSources": {
+    "PartyFactory": [
+      {
+        "name": "PartyFactory",
+        "address": "0x4D85D70E1036bc05342b25e6a3aD520790Ec6680",
+        "startBlock": 8015891
+      }
+    ]
+  }
+}
